@@ -1,25 +1,13 @@
-# Codex Tool Mapping
+# Codex 工具参考（中文版）
 
-Skills use Claude Code tool names. When you encounter these in a skill, use your platform equivalent:
+常用工具类别：
 
-| Skill references | Codex equivalent |
-|-----------------|------------------|
-| `Task` tool (dispatch subagent) | `spawn_agent` |
-| Multiple `Task` calls (parallel) | Multiple `spawn_agent` calls |
-| Task returns result | `wait` |
-| Task completes automatically | `close_agent` to free slot |
-| `TodoWrite` (task tracking) | `update_plan` |
-| `Skill` tool (invoke a skill) | Skills load natively — just follow the instructions |
-| `Read`, `Write`, `Edit` (files) | Use your native file tools |
-| `Bash` (run commands) | Use your native shell tools |
+- 文件与代码编辑
+- 命令执行与验证
+- 计划管理与状态更新
+- PR 生成与交付说明
 
-## Subagent dispatch requires collab
-
-Add to your Codex config (`~/.codex/config.toml`):
-
-```toml
-[features]
-collab = true
-```
-
-This enables `spawn_agent`, `wait`, and `close_agent` for skills like `dispatching-parallel-agents` and `subagent-driven-development`.
+使用原则：
+- 先最小化读取，再精确修改
+- 每次改动后立刻验证
+- 记录关键命令与结果

@@ -1,52 +1,11 @@
-# Plan Document Reviewer Prompt Template
+# 计划文档审查提示词（中文版）
 
-Use this template when dispatching a plan document reviewer subagent.
+请审查实施计划是否具备可执行性与可验证性。
 
-**Purpose:** Verify the plan chunk is complete, matches the spec, and has proper task decomposition.
+重点：
+- 步骤是否完整且顺序合理
+- 依赖关系是否明确
+- 风险与回退是否充分
+- 验收标准是否可度量
 
-**Dispatch after:** Each plan chunk is written
-
-```
-Task tool (general-purpose):
-  description: "Review plan chunk N"
-  prompt: |
-    You are a plan document reviewer. Verify this plan chunk is complete and ready for implementation.
-
-    **Plan chunk to review:** [PLAN_FILE_PATH] - Chunk N only
-    **Spec for reference:** [SPEC_FILE_PATH]
-
-    ## What to Check
-
-    | Category | What to Look For |
-    |----------|------------------|
-    | Completeness | TODOs, placeholders, incomplete tasks, missing steps |
-    | Spec Alignment | Chunk covers relevant spec requirements, no scope creep |
-    | Task Decomposition | Tasks atomic, clear boundaries, steps actionable |
-    | File Structure | Files have clear single responsibilities, split by responsibility not layer |
-    | File Size | Would any new or modified file likely grow large enough to be hard to reason about as a whole? |
-    | Task Syntax | Checkbox syntax (`- [ ]`) on steps for tracking |
-    | Chunk Size | Each chunk under 1000 lines |
-
-    ## CRITICAL
-
-    Look especially hard for:
-    - Any TODO markers or placeholder text
-    - Steps that say "similar to X" without actual content
-    - Incomplete task definitions
-    - Missing verification steps or expected outputs
-    - Files planned to hold multiple responsibilities or likely to grow unwieldy
-
-    ## Output Format
-
-    ## Plan Review - Chunk N
-
-    **Status:** Approved | Issues Found
-
-    **Issues (if any):**
-    - [Task X, Step Y]: [specific issue] - [why it matters]
-
-    **Recommendations (advisory):**
-    - [suggestions that don't block approval]
-```
-
-**Reviewer returns:** Status, Issues (if any), Recommendations
+输出：问题列表 + 修改建议 + 优先级。

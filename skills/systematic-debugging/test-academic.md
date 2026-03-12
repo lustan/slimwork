@@ -1,14 +1,8 @@
-# Academic Test: Systematic Debugging Skill
+# 学术型测试场景（中文版）
 
-You have access to the systematic debugging skill at skills/debugging/systematic-debugging
+用于验证调试方法在受控场景中的稳定性：
 
-Read the skill and answer these questions based SOLELY on what the skill says:
-
-1. What are the four phases of systematic debugging?
-2. What must you do BEFORE attempting any fix?
-3. In Phase 3, what should you do if your first hypothesis doesn't work?
-4. What does the skill say about fixing multiple things at once?
-5. What should you do if you don't fully understand the issue?
-6. Is it ever acceptable to skip the process for simple bugs?
-
-Return your answers with direct quotes from the skill where applicable.
+- 定义严格输入与预期输出
+- 固化实验步骤
+- 记录每次运行差异
+- 比较不同修复策略的效果
